@@ -2,11 +2,14 @@ function gradeLab(studentLab){
     try{
     for(let obj of studentLab){
     let {student, runLab} = obj;
-    if(runLab === undefined || runLab(3,3) !== Math.pow(3,3)){
+    if(runLab === undefined){
+        throw new Error("Error Thrown!");
+    }else if(runLab(3,3) !== Math.pow(3,3)){
         console.log(`${student} code working false`);
     }else{
         console.log(`${student} code working true`);
     }
+
 }
     
 }catch(err){
@@ -16,7 +19,7 @@ function gradeLab(studentLab){
 gradeLab([
     {
     student: "Blake",
-    myCode: function (num) {
+    runLab: function (num) {
     return Math.pow(num, num);
     },
     },
